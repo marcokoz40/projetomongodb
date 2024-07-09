@@ -8,6 +8,7 @@ public class ProjetomongodbApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetomongodbApplication.class, args);
+
 	}
 
 }
