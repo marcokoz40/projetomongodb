@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.example.marcojr.dominios.Post;
 import com.example.marcojr.dominios.Usuario;
+import com.example.marcojr.dto.AutorDto;
 import com.example.marcojr.repositorios.PostRepositorio;
 import com.example.marcojr.repositorios.UsuarioRepositorio;
 
@@ -33,10 +34,11 @@ public class UsuarioConfig implements CommandLineRunner{
 		Usuario u2 = new Usuario(null, "Samira Furlaneto", "samira@gmail.com");
 		Usuario u3 = new Usuario(null, "Patricia Maciel", "patricia@gmail.com");
 		
-		Post p1 = new Post(null, sdf.parse("01/01/2024"), "Partiu viagem", "Vou viajar", u1);
-		Post p2 = new Post(null, sdf.parse("04/07/2024"), "Bom dia", "Estou feliz hoje", u1);
-		
 		usuarioRepositorio.saveAll(Arrays.asList(u1, u2, u3));
+		
+		Post p1 = new Post(null, sdf.parse("01/01/2024"), "Partiu viagem", "Vou viajar", new AutorDto(u1));
+		Post p2 = new Post(null, sdf.parse("04/07/2024"), "Bom dia", "Estou feliz hoje", new AutorDto(u1));
+				
 		postRepositorio.saveAll(Arrays.asList(p1, p2));
 	}
 

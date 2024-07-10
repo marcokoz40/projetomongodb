@@ -7,6 +7,8 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.example.marcojr.dto.AutorDto;
+
 @Document(collection = "post")
 public class Post implements Serializable {
 
@@ -17,17 +19,17 @@ public class Post implements Serializable {
 	private Date data;
 	private String titulo;
 	private String corpo;
-	private Usuario usuario;
+	private AutorDto usuario;
 
 	public Post() {
 	}
 
-	public Post(String id, Date data, String titulo, String corpo, Usuario usuario) {
+	public Post(String id, Date data, String titulo, String corpo, AutorDto usuario) {
 		this.id = id;
 		this.data = data;
 		this.titulo = titulo;
 		this.corpo = corpo;
-		this.setUsuario(usuario);
+		this.usuario = usuario;
 	}
 
 	public String getId() {
@@ -62,11 +64,11 @@ public class Post implements Serializable {
 		this.corpo = corpo;
 	}
 
-	public Usuario getUsuario() {
+	public AutorDto getAutorDto() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(AutorDto usuario) {
 		this.usuario = usuario;
 	}
 
