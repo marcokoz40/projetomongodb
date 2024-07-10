@@ -1,15 +1,18 @@
 package com.example.marcojr.dominios;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.example.marcojr.dto.AutorDto;
+import com.example.marcojr.dto.CommentDto;
 
-@Document(collection = "post")
+@Document
 public class Post implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -20,6 +23,8 @@ public class Post implements Serializable {
 	private String titulo;
 	private String corpo;
 	private AutorDto usuario;
+
+	private List<CommentDto> lista = new ArrayList<>();
 
 	public Post() {
 	}
@@ -70,6 +75,14 @@ public class Post implements Serializable {
 
 	public void setUsuario(AutorDto usuario) {
 		this.usuario = usuario;
+	}
+
+	public List<CommentDto> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<CommentDto> lista) {
+		this.lista = lista;
 	}
 
 	@Override

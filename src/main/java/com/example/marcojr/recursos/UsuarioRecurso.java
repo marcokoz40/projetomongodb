@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.marcojr.dominios.Post;
 import com.example.marcojr.dominios.Usuario;
 import com.example.marcojr.dto.UsuarioDTO;
 import com.example.marcojr.servicos.UsuarioServico;
@@ -60,6 +61,12 @@ public class UsuarioRecurso {
 		obj.setId(id);
 		obj = servico.update(obj);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping(value = "/{id}/posts")
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+		Usuario obj = servico.findById(id);
+		return ResponseEntity.ok().body(obj.getListaPost());
 	}
 
 }
